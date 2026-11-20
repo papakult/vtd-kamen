@@ -1,5 +1,5 @@
 @font-face{font-family:CatalogSans;src:url("/assets/open-sans-ru.woff2") format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:CatalogDisplay;src:url("/assets/display.woff") format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:CatalogDisplay;src:url("/assets/display.woff2") format("woff2"),url("/assets/display.woff") format("woff");font-weight:400;font-display:swap}
 :root{color-scheme:dark;--ink:#f1ebdf;--sub:#bcb7aa;--rule:#474c47;--paper:#171a19;--surface:#202422;--deep:#111513;--gold:#c99b70;--emphasis:#e7be92;--field:#788075;--gutter:clamp(16px,4vw,76px);font-family:CatalogSans,Arial,sans-serif;color:var(--ink);background:var(--paper);-webkit-text-size-adjust:100%}
 *{box-sizing:border-box}
 body{margin:0;min-width:0;line-height:1.55}

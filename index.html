@@ -21,11 +21,11 @@
   <meta name="referrer" content="no-referrer">
   <title>ВТД «Камень» · Каталог поставок</title>
   <link rel="icon" href="mark.svg?v=f4d3f733ad" type="image/svg+xml">
-  <link rel="preload" href="assets/display.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="style.css?v=0b2914740e">
+  <link rel="preload" href="assets/display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css?v=78971b3782">
   <link rel="stylesheet" href="typography.css?v=dfc4d8bc3d">
-  <link rel="stylesheet" href="homepage.css?v=0ff9be3f44">
-  <script src="homepage.js?v=27dded4aaa" defer></script>
+  <link rel="stylesheet" href="homepage.css?v=ce15b8ee0b">
+  <script src="homepage.js?v=48a1fe34c3" defer></script>
 </head>
 <body class="trading-home">
   <a class="skip" href="#main">К содержанию</a>
@@ -33,10 +33,12 @@
   <main id="main">
     <section class="materials-cover" aria-labelledby="cover-title">
       <picture class="cover-art" aria-hidden="true">
+        <source type="image/avif" media="(max-width: 640px) and (orientation: portrait)" srcset="hero/harbour-film-mobile.avif" width="640" height="800">
         <source media="(max-width: 640px) and (orientation: portrait)" srcset="hero/harbour-film-mobile.webp" width="640" height="800">
+        <source type="image/avif" srcset="hero/harbour-film-mid.avif 1000w, hero/harbour-film-wide.avif 1440w" sizes="100vw">
         <img src="hero/harbour-film-mid.webp" srcset="hero/harbour-film-mid.webp 1000w, hero/harbour-film-wide.webp 1440w" sizes="100vw" width="1440" height="672" alt="" fetchpriority="high">
       </picture>
-      <video id="materials-film" autoplay muted loop playsinline preload="none" aria-hidden="true" data-wide="hero/harbour-film-wide.mp4" data-portrait="hero/harbour-film-mobile.mp4"></video>
+      <video id="materials-film" muted loop playsinline preload="none" aria-hidden="true" data-wide="hero/harbour-film-wide.mp4?v=904a57828d" data-portrait="hero/harbour-film-mobile.mp4?v=6dc11574d9"></video>
       <div class="cover-copy">
         <h1 id="cover-title">Камень</h1>
         <p>Нерудные материалы, металлы, стальные конструкции, древесина и&nbsp;техника.</p>
@@ -46,45 +48,45 @@
     <nav id="directions" class="direction-grid" aria-label="Направления поставок">
       <a class="direction-card" href="stone.html">
         <span class="direction-media" aria-hidden="true">
-          <img src="hero/direction-stone.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
-          <span class="direction-sample"><img src="products/stone-03.webp" alt="" loading="lazy" decoding="async"></span>
-          <span class="direction-preview"><img src="products/stone-03.webp" alt="" loading="lazy" decoding="async"><span>Щебень 20–40 мм</span></span>
+          <img src="hero/direction-stone.webp" srcset="hero/direction-stone-320.webp 320w, hero/direction-stone.webp 540w" sizes="(max-width: 700px) clamp(72px, 23vw, 128px), (max-width: 1110px) 21vw, (max-width: 1920px) 13vw, 250px" width="540" height="278" alt="" loading="lazy" decoding="async">
+          <picture class="direction-sample"><source media="(min-width: 701px)" srcset="hero/sample-stone-03-360.webp 360w, products/stone-03.webp 762w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture>
+          <span class="direction-preview"><picture><source media="(min-width: 701px)" srcset="hero/sample-stone-03-360.webp 360w, products/stone-03.webp 762w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture><span>Щебень 20–40 мм</span></span>
         </span>
         <span class="direction-copy"><span class="direction-title">Камень и&nbsp;нерудные материалы</span><span class="direction-count">17 позиций</span></span>
         <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="metals.html">
         <span class="direction-media" aria-hidden="true">
-          <img src="hero/direction-metals.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
-          <span class="direction-sample"><img src="products/metals-01.webp" alt="" loading="lazy" decoding="async"></span>
-          <span class="direction-preview"><img src="products/metals-01.webp" alt="" loading="lazy" decoding="async"><span>Медный слиток</span></span>
+          <img src="hero/direction-metals.webp" srcset="hero/direction-metals-320.webp 320w, hero/direction-metals.webp 540w" sizes="(max-width: 700px) clamp(72px, 23vw, 128px), (max-width: 1110px) 21vw, (max-width: 1920px) 13vw, 250px" width="540" height="278" alt="" loading="lazy" decoding="async">
+          <picture class="direction-sample"><source media="(min-width: 701px)" srcset="hero/sample-metals-01-360.webp 360w, products/metals-01.webp 414w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture>
+          <span class="direction-preview"><picture><source media="(min-width: 701px)" srcset="hero/sample-metals-01-360.webp 360w, products/metals-01.webp 414w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture><span>Медный слиток</span></span>
         </span>
         <span class="direction-copy"><span class="direction-title">Металлы высокой чистоты</span><span class="direction-count">9 позиций</span></span>
         <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="steel.html">
         <span class="direction-media" aria-hidden="true">
-          <img src="hero/direction-steel.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
-          <span class="direction-sample"><img src="products/steel-08.webp" alt="" loading="lazy" decoding="async"></span>
-          <span class="direction-preview"><img src="products/steel-08.webp" alt="" loading="lazy" decoding="async"><span>Анкерная группа</span></span>
+          <img src="hero/direction-steel.webp" srcset="hero/direction-steel-320.webp 320w, hero/direction-steel.webp 540w" sizes="(max-width: 700px) clamp(72px, 23vw, 128px), (max-width: 1110px) 21vw, (max-width: 1920px) 13vw, 250px" width="540" height="278" alt="" loading="lazy" decoding="async">
+          <picture class="direction-sample"><source media="(min-width: 701px)" srcset="hero/sample-steel-08-360.webp 360w, products/steel-08.webp 758w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture>
+          <span class="direction-preview"><picture><source media="(min-width: 701px)" srcset="hero/sample-steel-08-360.webp 360w, products/steel-08.webp 758w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture><span>Анкерная группа</span></span>
         </span>
         <span class="direction-copy"><span class="direction-title single-word">Металлоконструкции</span><span class="direction-count">12 позиций</span></span>
         <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="cars.html">
         <span class="direction-media" aria-hidden="true">
-          <img src="hero/direction-cars.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
-          <span class="direction-sample"><img src="products/cars-21.webp" alt="" loading="lazy" decoding="async"></span>
-          <span class="direction-preview"><img src="products/cars-21.webp" alt="" loading="lazy" decoding="async"><span>Седельный тягач</span></span>
+          <img src="hero/direction-cars.webp" srcset="hero/direction-cars-320.webp 320w, hero/direction-cars.webp 540w" sizes="(max-width: 700px) clamp(72px, 23vw, 128px), (max-width: 1110px) 21vw, (max-width: 1920px) 13vw, 250px" width="540" height="278" alt="" loading="lazy" decoding="async">
+          <picture class="direction-sample"><source media="(min-width: 701px)" srcset="hero/sample-cars-21-360.webp 360w, products/cars-21.webp 621w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture>
+          <span class="direction-preview"><picture><source media="(min-width: 701px)" srcset="hero/sample-cars-21-360.webp 360w, products/cars-21.webp 621w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture><span>Седельный тягач</span></span>
         </span>
         <span class="direction-copy"><span class="direction-title">Автомобили, спецтехника и&nbsp;запчасти</span><span class="direction-count">19 товарных групп</span></span>
         <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="wood.html">
         <span class="direction-media" aria-hidden="true">
-          <img src="hero/direction-wood.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
-          <span class="direction-sample"><img src="products/wood-04.webp" alt="" loading="lazy" decoding="async"></span>
-          <span class="direction-preview"><img src="products/wood-04.webp" alt="" loading="lazy" decoding="async"><span>Шпунтованная доска</span></span>
+          <img src="hero/direction-wood.webp" srcset="hero/direction-wood-320.webp 320w, hero/direction-wood.webp 540w" sizes="(max-width: 700px) clamp(72px, 23vw, 128px), (max-width: 1110px) 21vw, (max-width: 1920px) 13vw, 250px" width="540" height="278" alt="" loading="lazy" decoding="async">
+          <picture class="direction-sample"><source media="(min-width: 701px)" srcset="hero/sample-wood-04-360.webp 360w, products/wood-04.webp 506w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture>
+          <span class="direction-preview"><picture><source media="(min-width: 701px)" srcset="hero/sample-wood-04-360.webp 360w, products/wood-04.webp 506w" sizes="(max-width: 1110px) 30vw, (max-width: 1920px) 18vw, 345px"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy" decoding="async"></picture><span>Шпунтованная доска</span></span>
         </span>
         <span class="direction-copy"><span class="direction-title single-word">Деревообработка</span><span class="direction-count">19 позиций</span></span>
         <span class="direction-arrow" aria-hidden="true"></span>

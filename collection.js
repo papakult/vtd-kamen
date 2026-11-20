@@ -60,19 +60,33 @@
   let selected = 0;
   let arrivingSlide;
 
+  const thumbByItem = new Map(thumbs.map(thumb => [thumb.dataset.item, thumb]));
+  let activeThumb = thumbStrip.querySelector('[aria-pressed="true"]');
+
+  const slideByItem = new Map(slides.map(slide => [slide.dataset.item, slide]));
+
+  function revealPhoto(container) {
+    const template = container.querySelector('template');
+    if (template) template.replaceWith(template.content);
+  }
+
   function markSelected(index) {
+    // Native lazy loading may prefetch an entire horizontal carousel on a phone.
+    for (let i = Math.max(0, index - 1); i < Math.min(visible.length, index + 2); i++) {
+      revealPhoto(slideByItem.get(visible[i].id));
+    }
     selected = index;
-    const id = visible[index]?.id;
-    for (const thumb of thumbs) {
-      const active = thumb.dataset.item === id;
-      thumb.setAttribute('aria-pressed', String(active));
-      if (active) {
-        const left = thumb.getBoundingClientRect().left - thumbStrip.getBoundingClientRect().left + thumbStrip.scrollLeft;
-        if (left < thumbStrip.scrollLeft) thumbStrip.scrollLeft = left;
-        else if (left + thumb.offsetWidth > thumbStrip.scrollLeft + thumbStrip.clientWidth) {
-          thumbStrip.scrollLeft = left + thumb.offsetWidth - thumbStrip.clientWidth;
-        }
-      }
+    const thumb = thumbByItem.get(visible[index]?.id);
+    if (thumb !== activeThumb) {
+      activeThumb?.setAttribute('aria-pressed', 'false');
+      thumb?.setAttribute('aria-pressed', 'true');
+      activeThumb = thumb;
+    }
+    if (!thumb) return;
+    const left = thumb.getBoundingClientRect().left - thumbStrip.getBoundingClientRect().left;
+    if (left < 0) thumbStrip.scrollLeft += left;
+    else if (left + thumb.offsetWidth > thumbStrip.clientWidth) {
+      thumbStrip.scrollLeft += left + thumb.offsetWidth - thumbStrip.clientWidth;
     }
   }
   function showSlide(index, animate = false) {
@@ -139,7 +153,10 @@
   for (const row of products) {
     row.addEventListener('toggle', () => {
       const index = visible.indexOf(row);
-      if (row.open && index >= 0) showSlide(index);
+      if (row.open) {
+        revealPhoto(row);
+        if (index >= 0) showSlide(index);
+      }
     });
   }
   for (const link of gallery.querySelectorAll('[data-apply-group]')) {

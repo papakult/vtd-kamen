@@ -6,30 +6,38 @@
   const portrait = matchMedia('(max-width: 640px) and (orientation: portrait)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const connection = navigator.connection;
-  let visible = true;
+  let ready = false;
+  let visible = !('IntersectionObserver' in window);
   let waitingForPlay = false;
 
   video.defaultMuted = true;
   video.muted = true;
-  // Source changes and visibility events must respect a manual pause.
-  video.autoplay = false;
 
   function prefersPoster() {
-    return reduced.matches || connection?.saveData;
+    return reduced.matches || connection?.saveData ||
+      ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
   }
 
   function updateControl() {
     if (!control) return;
-    control.hidden = prefersPoster() || !visible || document.hidden;
+    control.hidden = !ready || prefersPoster() || !visible || document.hidden;
     control.textContent = video.paused || video.error
       ? 'Воспроизвести фоновое видео'
       : 'Приостановить фоновое видео';
   }
 
   function sync() {
-    if (prefersPoster() || !visible || document.hidden) {
+    if (prefersPoster()) {
+      cover.removeAttribute('data-film-ready');
+      if (video.hasAttribute('src')) {
+        video.removeAttribute('src');
+        video.load();
+      }
+      updateControl();
+      return;
+    }
+    if (!ready || !visible || document.hidden) {
       video.pause();
-      if (prefersPoster()) cover.removeAttribute('data-film-ready');
       updateControl();
       return;
     }
@@ -85,5 +93,13 @@
       sync();
     }).observe(cover);
   }
-  sync();
+  // The decorative movie starts after the page load and the poster's first paint.
+  function afterLoad() {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      ready = true;
+      sync();
+    }));
+  }
+  if (document.readyState === 'complete') afterLoad();
+  else window.addEventListener('load', afterLoad, { once: true });
 })();

@@ -29,8 +29,7 @@
         rows[i] = chunk.map(([name,sku,brand,group,page,anchor,skuArchive]) => {
           const [groupName,slug] = groups[group];
           const line = normalize([name,sku,brand,groupName].join(' '));
-          const href = new URL(slug + '/' + (page === 1 ? '' : 'page-' + page + '.html') + '#' + anchor,indexRoot);
-          return {name,sku,brand,groupName,skuArchive,line,code:compact(line),href};
+          return {name,sku,brand,groupName,skuArchive,line,code:compact(line),slug,page,anchor};
         });
       }
     }
@@ -43,7 +42,11 @@
     for (const result of matches.slice(shown,end)) {
       const row = document.createElement('li'); row.className='part-row';
       const info = document.createElement('div');
-      const title = document.createElement('a'); title.className='part-title'; title.href=result.href; title.textContent=result.name;
+      const page = result.page === 1 ? '' : 'page-' + result.page + '.html';
+      const title = document.createElement('a');
+      title.className = 'part-title';
+      title.href = new URL(result.slug + '/' + page + '#' + result.anchor, indexRoot);
+      title.textContent = result.name;
       const meta = document.createElement('span'); meta.className='part-meta';
       for (const label of [result.groupName,result.sku ? (result.skuArchive ? 'Артикул по прайсу от '+result.skuArchive+' · ' : 'Артикул ') + result.sku : '',result.brand]) {
         if (!label) continue;
@@ -69,7 +72,10 @@
         const link=document.createElement('a');link.href=category.href;link.textContent=category.name;categoryResults.append(link);
       }
       categoryResults.hidden=!categories.length;
-      matches=index.items.filter(row => tokens.every(term => row.line.includes(term) || (compact(term) && row.code.includes(compact(term)))));
+      const terms = tokens.map(text => ({text,code:compact(text)}));
+      matches = index.items.filter(row => terms.every(({text,code}) =>
+        row.line.includes(text) || (code && row.code.includes(code))
+      ));
       const count=matches.length;
       const totals=[];
       if(categories.length)totals.push(categories.length.toLocaleString('ru-RU')+' '+noun(categories.length,{one:'категория',few:'категории',many:'категорий'}));

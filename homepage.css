@@ -29,7 +29,8 @@
 .materials-cover::after { content: ""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,#0e1515d9 0%,#0e151591 25%,#0e151518 52%,transparent 74%); }
 .cover-copy {
   position: relative; z-index: 1; justify-self: start;
-  margin-left: var(--edge); padding-block: 48px 55px;
+  margin-left: max(var(--edge), calc((100% - 1920px) / 2 + var(--edge)));
+  padding-block: 48px 55px;
 }
 .cover-copy h1 {
   color: #fff8e9; font: 400 clamp(5.2rem, 9.9vw, 11.2rem)/.93 var(--display);
