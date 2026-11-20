@@ -52,7 +52,9 @@
     return fold(Array.from(fields, field => field.textContent).join(' '));
   });
   const counter = new Intl.PluralRules('ru');
-  const nouns = {one: 'позиция', few: 'позиции', many: 'позиций', other: 'позиций'};
+  const nouns = panel.dataset.countKind === 'groups'
+    ? {one: 'группа', few: 'группы', many: 'групп', other: 'групп'}
+    : {one: 'позиция', few: 'позиции', many: 'позиций', other: 'позиций'};
   let group = '';
   let visible = products;
   let selected = 0;

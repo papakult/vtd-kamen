@@ -108,3 +108,28 @@ h1, h2, h3, .product-title, .cardname {
 .bar .navlinks a.pdf { gap: 5px; }
 .bar .navlinks a.pdf small { display: inline; font-size: .76em; }
 @media (max-width: 370px) { .bar .navlinks a.pdf small { font-size: 1em; } }
+
+.machine-catalog-nav {
+  display: flex; flex-wrap: wrap; gap: 8px clamp(18px,3vw,45px);
+  margin: 0 var(--pad); padding: 14px 0; border-bottom: 1px solid var(--line);
+}
+.machine-catalog-nav a {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 38px;
+  color: var(--ink); font-size: .94rem; text-decoration: underline; text-underline-offset: 4px;
+}
+.machine-catalog-nav a span { width: 7px; height: 7px; border-top: 1px solid; border-right: 1px solid; }
+.site-mast .navlinks .directions,
+.bar .navlinks .directions { display: inline-flex; }
+
+/* The owner information page uses the same reading surface as the catalog. */
+body:has(.owner) { color-scheme: dark; color: #f1ebdf; background: #171a19; }
+body:has(.owner) .smallhead { background: #121513; }
+body:has(.owner) .row { border-color: #454740; }
+body:has(.owner) .row p { color: #c9c3b7; }
+body:has(.owner) .foot { color: #bcb7aa; border-color: #454740; }
+.contact-page { color-scheme: dark; background:#171a19; color:#f1ebdf; }
+.contact-page .smallhead { background: #121513; }
+.contact-page .foot { border-color:#454740; color:#bcb7aa; }
+.contact-methods div { border-color:#5b5a50; }
+.contact-page .contact-methods dt { color:#bcb7aa; }
+.contact-page .contact-methods a { color:#e4ba91; }

@@ -1,33 +1,67 @@
 (() => {
   const cover = document.querySelector('.materials-cover');
   const video = document.getElementById('materials-film');
-  const button = cover.querySelector('.film-toggle');
+  const pause = cover.querySelector('.film-toggle');
   if (!video.canPlayType('video/mp4')) return;
-  const label = button.querySelector('.film-label');
-  const portrait = window.matchMedia('(max-width: 640px) and (orientation: portrait)');
-  function update() {
-    const playing = !video.paused && !video.ended;
-    cover.toggleAttribute('data-playing', playing);
-    button.setAttribute('aria-pressed', String(playing));
-    label.textContent = playing ? 'Пауза' : 'Смотреть фильм';
-  }
-  button.hidden = false;
-  button.addEventListener('click', () => {
-    if (!video.paused && !video.ended) {
+  const portrait = matchMedia('(max-width: 640px) and (orientation: portrait)');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = true;
+  let visitorPaused = false;
+  let blocked = false;
+
+  video.defaultMuted = true;
+  video.muted = true;
+
+  function sync() {
+    if (reduced.matches || !visible || document.hidden || visitorPaused || blocked) {
       video.pause();
+      if (reduced.matches) {
+        cover.removeAttribute('data-film-ready');
+        pause.hidden = true;
+      }
       return;
     }
     const source = portrait.matches ? video.dataset.portrait : video.dataset.wide;
-    if (video.getAttribute('src') !== source) video.src = source;
-    video.play().catch(update);
-  });
-  for (const event of ['playing', 'pause', 'ended']) video.addEventListener(event, update);
-  video.addEventListener('error', () => {
-    cover.removeAttribute('data-playing');
-    button.hidden = true;
-  });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => { if (!entry.isIntersecting) video.pause(); }).observe(cover);
+    if (video.getAttribute('src') !== source) {
+      cover.removeAttribute('data-film-ready');
+      video.src = source;
+    }
+    video.play().catch(error => {
+      if (error.name !== 'NotAllowedError') return;
+      blocked = true;
+      pause.hidden = true;
+      cover.removeAttribute('data-film-ready');
+    });
   }
+
+  video.addEventListener('playing', () => {
+    cover.setAttribute('data-film-ready', '');
+    cover.setAttribute('data-playing', '');
+    pause.setAttribute('aria-label', 'Приостановить смену кадров');
+    pause.hidden = false;
+  });
+  video.addEventListener('pause', () => {
+    cover.removeAttribute('data-playing');
+    pause.setAttribute('aria-label', 'Продолжить смену кадров');
+  });
+  video.addEventListener('error', () => {
+    blocked = true;
+    cover.removeAttribute('data-film-ready');
+    cover.removeAttribute('data-playing');
+    pause.hidden = true;
+  });
+  pause.addEventListener('click', () => {
+    visitorPaused = !visitorPaused;
+    sync();
+  });
+  portrait.addEventListener('change', sync);
+  reduced.addEventListener('change', sync);
+  document.addEventListener('visibilitychange', sync);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    }).observe(cover);
+  }
+  sync();
 })();

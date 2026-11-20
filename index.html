@@ -9,9 +9,9 @@
   <link rel="icon" href="mark.svg" type="image/svg+xml">
   <link rel="preload" href="assets/display.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css?v=590c0dc379">
-  <link rel="stylesheet" href="typography.css?v=7c2d6d4277">
-  <link rel="stylesheet" href="homepage.css?v=cf1afd68c9">
-  <script src="homepage.js?v=49e48e58f6" defer></script>
+  <link rel="stylesheet" href="typography.css?v=3a2f2c0456">
+  <link rel="stylesheet" href="homepage.css?v=bfc3ad64eb">
+  <script src="homepage.js?v=2f050e0968" defer></script>
 </head>
 <body class="trading-home">
   <a class="skip" href="#main">К содержанию</a>
@@ -19,18 +19,16 @@
   <main id="main">
     <section class="materials-cover" aria-labelledby="cover-title">
       <picture class="cover-art">
-        <source media="(max-width: 640px) and (orientation: portrait)" srcset="hero/edition-mobile.webp" width="720" height="900">
-        <img src="hero/gallery-mid.webp" srcset="hero/gallery-mid.webp 1120w, hero/gallery-wide.webp 1920w" sizes="100vw" width="1920" height="817" alt="Архитектурная композиция из камня, меди, стального двутавра и древесины" fetchpriority="high">
+        <source media="(max-width: 640px) and (orientation: portrait)" srcset="hero/terminal-mobile.webp" width="720" height="900">
+        <img src="hero/terminal-mid.webp" srcset="hero/terminal-mid.webp 1120w, hero/terminal-wide.webp 1920w" sizes="100vw" width="1920" height="820" alt="Общий вид грузового терминала с металлоконструкциями, камнем, пиломатериалами и транспортом" fetchpriority="high">
       </picture>
-      <video id="materials-film" muted playsinline preload="none" aria-hidden="true" data-wide="hero/materials-edition-wide.mp4" data-portrait="hero/materials-edition-mobile.mp4"></video>
+      <video id="materials-film" autoplay muted loop playsinline preload="none" aria-hidden="true" data-wide="hero/terminal-wide.mp4" data-portrait="hero/terminal-mobile.mp4"></video>
       <div class="cover-copy">
         <h1 id="cover-title">Камень</h1>
         <p>Нерудные материалы, металлы, стальные конструкции, древесина и&nbsp;техника.</p>
         <a class="catalog-entry" href="#directions">Открыть каталог <span aria-hidden="true"></span></a>
       </div>
-      <button class="film-toggle" type="button" aria-controls="materials-film" aria-pressed="false" hidden>
-        <span class="film-icon" aria-hidden="true"></span><span class="film-label">Смотреть фильм</span>
-      </button>
+      <button class="film-toggle" type="button" aria-controls="materials-film" aria-label="Приостановить смену кадров" hidden><span class="film-icon" aria-hidden="true"></span></button>
     </section>
     <nav id="directions" class="direction-grid" aria-label="Направления поставок">
       <a class="direction-card" href="stone.html">
@@ -59,7 +57,14 @@
         <span class="direction-arrow" aria-hidden="true"></span>
       </a>
     </nav>
+    <nav class="partner-index" id="partner-catalog" aria-label="Каталог СпецМира">
+      <div><h2>Каталог «СпецМира»</h2>
+        <a href="catalog/machines/">Грузовая и&nbsp;специальная техника</a>
+        <a href="catalog/parts/">Запасные части</a>
+        <a href="catalog/equipment/">Промышленное оборудование</a>
+      </div>
+    </nav>
   </main>
-  <footer class="foot"><span>ВТД «Камень»</span><nav aria-label="Навигация внизу страницы"><a href="index.html#directions">Каталог</a> <a href="contacts.html">Контакты</a></nav></footer>
+  <footer class="foot"><span>Всероссийский торговый дом «Камень»</span></footer>
 </body>
 </html>
