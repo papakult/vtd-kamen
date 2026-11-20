@@ -103,18 +103,18 @@
   .site-mast .brand { font-size: 13px; gap: 7px; }
 
   .site-mast .navlinks { gap: 14px; }
-  .site-mast .navlinks a { font-size: .77rem; }
-  .site-mast .directions { display: none; }
+  .site-mast .navlinks a { font-size: .875rem; min-height: 44px; padding-inline: 3px; }
   .direction-grid { grid-template-columns: 1fr; gap: 0; padding-block: 5px 16px; }
   .direction-card {
-    display: grid; grid-template-columns: clamp(56px,19vw,110px) minmax(0,1fr) 17px;
-    gap: clamp(8px,2.7vw,18px); align-items: center; min-height: 66px;
+    display: grid; grid-template-columns: clamp(72px,23vw,128px) minmax(0,1fr);
+    gap: clamp(10px,3.2vw,20px); align-items: center; min-height: 84px;
     padding-block: 9px; border-bottom: 1px solid #c8c1b3;
   }
-  .direction-copy { gap: 4px; }
-  .direction-title { font-size: clamp(14px,8.65cqi,24px); }
+  .direction-copy { gap: 5px; }
+  .direction-title { font-size: clamp(1.125rem, 5vw, 1.5rem); line-height: 1.15; }
+  .direction-title.single-word { font-size: clamp(1rem, 9cqi, 1.5rem); white-space: normal; overflow-wrap: anywhere; }
+  .direction-count { font-size: .8125rem; }
   .direction-card > img { width:100%; height:auto; aspect-ratio:1.63; }
-  .direction-arrow { position:static; background:none; width:17px; height:22px; font-size:17px; }
   .partner-index > div { gap: 7px 17px; }
   .partner-index h2 { width:100%; }
 }
@@ -144,7 +144,6 @@
 .catalog-entry span { width: 12px; height: 14px; display: inline-grid; position: relative; place-items:center; }
 .catalog-entry span::before { content:""; height: 12px; border-left: 1px solid; }
 .catalog-entry span::after { content:""; position:absolute; bottom:2px; width:6px; height:6px; border-right:1px solid; border-bottom:1px solid; transform: rotate(45deg); }
-@media (max-width:700px) { .direction-arrow { position:relative; inset: auto; } }
 @media (max-width:640px) and (orientation:portrait) {
   #materials-film { object-fit: cover; object-position: center; }
 }
@@ -198,22 +197,22 @@
   text-wrap: balance;
 }
 @media (max-width: 700px) {
-  .site-mast { min-height: 57px; }
-  .site-mast .brand { font-size: .71rem; }
+  .site-mast { min-height: 60px; }
+  .site-mast .brand { min-height: 44px; font-size: .8125rem; line-height: 1.25; }
 
   .direction-grid { padding-block: 5px 19px; }
   .direction-card { padding-block: 12px; }
-  .direction-arrow { inset: auto; }
+  .direction-arrow { inset: auto 0 12px auto; }
 }
 @media (max-width: 640px) {
-  .materials-cover { min-height: clamp(400px,58svh,600px); }
-  .cover-copy { padding-block: 108px 26px; }
-  .cover-copy h1 { font-size: clamp(3.75rem,13vw,5.8rem); }
-  .cover-copy p { max-width: min(31ch,77vw); }
+  .materials-cover { min-height: clamp(21rem, 49svh, 31rem); }
+  .cover-copy { margin-inline: var(--edge); padding-block: 88px 25px; }
+  .cover-copy h1 { font-size: clamp(3.75rem, 16.8vw, 5.8rem); }
+  .cover-copy p { max-width: 35ch; font-size: 1rem; line-height: 1.44; text-wrap: pretty; }
 }
 .site-mast .navlinks { color: #fff7e8; }
 @media (max-width: 500px) {
-  .site-mast .navlinks { gap: 11px; }
+  .site-mast .navlinks { gap: clamp(5px, 2vw, 11px); }
 }
 
 /* Pair a view of the trade with a product from its collection. */
@@ -272,7 +271,7 @@
   .direction-card::after { transition: transform 230ms ease-out; }
 }
 @media (max-width: 700px) {
-  .direction-media { width: 100%; aspect-ratio: 1.65; grid-template-columns: 1fr; }
+  .direction-media { width: 100%; aspect-ratio: 1.42; grid-template-columns: 1fr; }
   .direction-sample, .direction-preview { display: none; }
 }
 .materials-cover::after {
