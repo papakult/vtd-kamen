@@ -46,18 +46,26 @@
 }
 .catalog-entry span { font-size: 19px; }
 .catalog-entry:hover { border-bottom-color: #fff; }
-.film-toggle {
-  position: absolute; z-index: 2; right: var(--edge); bottom: 24px;
-  display: inline-grid; place-items: center; width: 44px; height: 44px;
-  padding: 0; background: #151510ab; border: 1px solid #e9dcc78f;
-  border-radius: 30px; color: #fff8eb; font: 400 .8rem/1 var(--text); cursor: pointer;
+.motion-control {
+  position: absolute;
+  z-index: 2;
+  right: var(--edge);
+  bottom: 18px;
+  padding: 10px 16px;
+  border: 1px solid currentColor;
+  color: #fff8ed;
+  background: #171a19;
+  font: inherit;
 }
-.film-toggle[hidden] { display: none; }
-.film-icon { display: grid; place-content: center; width: 27px; height: 27px; }
-.film-icon::after { content: ""; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent currentColor; }
-.materials-cover[data-playing] .film-icon::after { border: 0; width: 7px; height: 10px; border-inline: 2px solid; }
-
-.film-toggle:hover, .film-toggle:focus-visible { background: #28251e; border-color: #fff8eb; }
+.motion-control:not(:focus-visible) {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
 .direction-grid {
   display: grid; grid-template-columns: repeat(5, minmax(0,1fr));
   gap: clamp(12px, 1.4vw, 26px); max-width: 1920px;
@@ -122,7 +130,6 @@
   .cover-copy h1 { font-size: clamp(3.55rem,12.2vw,5.2rem); }
   .cover-copy p { max-width: min(34ch,79vw); font-size: .88rem; line-height: 1.45; }
   .catalog-entry { min-height: 38px; margin-top: 18px; gap: 15px; font-size:.8rem; }
-  .film-toggle { bottom: 12px; right: 14px; min-height: 38px; }
 
   #materials-film { object-fit: cover; }
 }
@@ -176,7 +183,30 @@
 .partner-index > div { border-color: var(--border); padding-top: 21px; }
 .partner-index h2 { color: var(--type); }
 .partner-index a { color: #debb97; }
-.trading-home .foot { margin: 0; padding: 16px var(--edge); background: #121513; border-color: var(--border); color: var(--muted); }
+.trading-home .foot {
+  justify-content: center;
+  margin: 0;
+  padding: clamp(30px, 3.6vw, 58px) var(--edge) clamp(34px, 4vw, 64px);
+  border: 0;
+  background: #121513;
+}
+.house-signature {
+  display: grid;
+  justify-items: center;
+  gap: .62rem;
+  text-align: center;
+}
+.house-descriptor {
+  font: 400 clamp(.75rem, .85vw, .9rem)/1.45 var(--text);
+  text-transform: uppercase;
+  letter-spacing: .17em;
+  color: #cfb498;
+}
+.house-name {
+  color: #f1ebdf;
+  font: 400 clamp(2.35rem, 3.8vw, 4.1rem)/1.08 var(--display);
+  letter-spacing: -.035em;
+}
 @media (max-width: 700px) {
   .site-mast { min-height: 57px; }
   .site-mast .brand { font-size: .71rem; }
@@ -255,49 +285,12 @@
   .direction-media { width: 100%; aspect-ratio: 1.65; grid-template-columns: 1fr; }
   .direction-sample, .direction-preview { display: none; }
 }
-.film-toggle { border-color: #e8d7bf91; }
-.film-toggle::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  padding: 2px;
-  border-radius: inherit;
-  background: conic-gradient(from 0deg, #f2c59a var(--film-angle, 0deg), transparent 0);
-  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 0);
-  pointer-events: none;
-}
-/* Fixed editorial signature, clear of navigation, headline and film controls. */
-.cover-emblem {
-  position: absolute;
-  z-index: 1;
-  inset-block-start: 48%;
-  inset-inline-end: var(--edge);
-  width: clamp(148px, 14vw, 220px);
-  height: auto;
-  transform: translateY(-50%);
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 1px 2px rgb(14 17 16 / 42%));
-}
-@media (max-width: 700px) {
-  .cover-emblem {
-    inset-block-start: clamp(79px, 11vh, 112px);
-    width: clamp(93px, 23vw, 120px);
-    transform: none;
-  }
-}
-.site-mast .brand-mark {
-  display: block;
-  width: 36px;
-  height: auto;
-}
 .materials-cover::after {
   background:
     linear-gradient(0deg, rgb(10 15 17 / 49%), transparent 48%),
     linear-gradient(90deg, rgb(10 15 17 / 78%), rgb(10 15 17 / 46%) 30%, transparent 64%);
 }
 @media (max-width: 640px) {
-  .site-mast .brand-mark { width: 30px; height: auto; }
   .materials-cover::after {
     background: linear-gradient(0deg, rgb(10 15 17 / 89%), rgb(10 15 17 / 60%) 25%, transparent 65%);
   }

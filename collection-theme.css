@@ -72,6 +72,16 @@ body.category:is(.stone,.metals,.steel,.cars,.wood) {
   border-color: var(--catalog-metal);
   color: white;
 }
+/* Category films start on request. Keep the stop action legible on touch screens. */
+.category .playback:not(.paused) {
+  width: auto;
+  min-height: 44px;
+  padding-inline: 12px;
+  border-radius: 3px;
+  font: 400 .8rem/1.2 var(--text);
+}
+.category .playback:not(.paused) span { display: none; }
+.category .playback:not(.paused)::after { content: attr(aria-label); }
 .category .machine-catalog-nav { border-color: var(--catalog-edge); }
 .category .machine-catalog-nav a { color: var(--catalog-metal); }
 .category .collection-head { border-color: var(--catalog-control-edge); }

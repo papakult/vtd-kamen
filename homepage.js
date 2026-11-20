@@ -1,9 +1,8 @@
 (() => {
   const cover = document.querySelector('.materials-cover');
   const video = document.getElementById('materials-film');
-  const toggle = cover.querySelector('.film-toggle');
-  if (!video.canPlayType('video/mp4')) return;
-
+  if (!cover || !video?.canPlayType('video/mp4')) return;
+  const control = cover.querySelector('.motion-control');
   const portrait = matchMedia('(max-width: 640px) and (orientation: portrait)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const connection = navigator.connection;
@@ -12,49 +11,44 @@
 
   video.defaultMuted = true;
   video.muted = true;
-  // Switching sources must respect a pause even when the element has an autoplay attribute.
+  // Source changes and visibility events must respect a manual pause.
   video.autoplay = false;
 
   function prefersPoster() {
     return reduced.matches || connection?.saveData;
   }
 
-  function showPlayControl() {
-    cover.removeAttribute('data-playing');
-    toggle.setAttribute('aria-label', video.currentTime > 0 ? 'Продолжить фоновое видео' : 'Воспроизвести фоновое видео');
-    toggle.hidden = prefersPoster();
+  function updateControl() {
+    if (!control) return;
+    control.hidden = prefersPoster() || !visible || document.hidden;
+    control.textContent = video.paused || video.error
+      ? 'Воспроизвести фоновое видео'
+      : 'Приостановить фоновое видео';
   }
 
   function sync() {
     if (prefersPoster() || !visible || document.hidden) {
       video.pause();
-      if (prefersPoster()) {
-        cover.removeAttribute('data-film-ready');
-        toggle.hidden = true;
-      }
+      if (prefersPoster()) cover.removeAttribute('data-film-ready');
+      updateControl();
       return;
     }
 
     const source = portrait.matches ? video.dataset.portrait : video.dataset.wide;
     if (video.getAttribute('src') !== source) {
       cover.removeAttribute('data-film-ready');
-      toggle.style.setProperty('--film-angle', '0deg');
       video.src = source;
     }
-    if (waitingForPlay || video.error) {
-      showPlayControl();
-      return;
-    }
+    updateControl();
+    if (waitingForPlay || video.error) return;
     video.play().catch(error => {
       if (error.name === 'AbortError' || video.getAttribute('src') !== source) return;
-      // Browsers that require a tap still offer the film on the same control.
       waitingForPlay = true;
-      showPlayControl();
+      updateControl();
     });
   }
 
   video.addEventListener('playing', () => {
-    if (video.paused || prefersPoster() || waitingForPlay) return;
     const source = video.getAttribute('src');
     const showFrame = () => {
       if (!video.paused && !prefersPoster() && video.getAttribute('src') === source) {
@@ -63,21 +57,14 @@
     };
     if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(showFrame);
     else showFrame();
-    cover.setAttribute('data-playing', '');
-    toggle.setAttribute('aria-label', 'Приостановить фоновое видео');
-    toggle.hidden = false;
+    updateControl();
   });
-  video.addEventListener('timeupdate', () => {
-    if (!video.paused && Number.isFinite(video.duration) && video.duration > 0) {
-      toggle.style.setProperty('--film-angle', (360 * video.currentTime / video.duration) + 'deg');
-    }
-  });
-  video.addEventListener('pause', showPlayControl);
+  video.addEventListener('pause', updateControl);
   video.addEventListener('error', () => {
     cover.removeAttribute('data-film-ready');
-    showPlayControl();
+    updateControl();
   });
-  toggle.addEventListener('click', () => {
+  control?.addEventListener('click', () => {
     if (!video.paused && !video.error) {
       waitingForPlay = true;
       video.pause();
