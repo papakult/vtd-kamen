@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "Open Sans Local";
+  src: url("assets/open-sans-ru.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --text: "Open Sans Local", Arial, sans-serif;
+}
+html { scroll-behavior: auto; }
+body, button, input { font-family: var(--text); }
+body { -webkit-text-size-adjust: 100%; }
+html * { animation: none !important; transition: none !important; }
+h1, h2, h3, .product-title, .cardname {
+  hyphens: none;
+  word-break: normal;
+}
+.navlinks { gap: clamp(.75rem, 2vw, 2rem); }
+.navlinks a { display: inline-flex; align-items: center; min-height: 44px; }
+.navlinks a:after { display: none; }
+.navlinks a:is(:focus-visible,:hover) { text-decoration: underline; text-underline-offset: 4px; }
+.mineral-glint { display: none; }
+.foot { align-items: center; padding-block: 12px; }
+.foot nav { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; }
+.foot nav a { display: inline-flex; align-items: center; min-height: 42px; }
+.card:is(:hover,:focus-visible) img,
+.card:is(:hover,:focus-visible) .card-action i,
+.product summary:is(:hover,:focus-visible) .product-title,
+.primary:hover { transform: none; }
+.primary:before { display: none; }
+.primary:is(:hover,:focus-visible) { background: #fff; }
+.masthead p, .primary, .outline, .card-action { font-family: var(--text); }
+.cardname { letter-spacing: -.024em; }
+.collection-head h2, .masthead h1 { letter-spacing: -.035em; }
+.masthead h1 { line-height: 1.04; }
+.product-title { letter-spacing: -.017em; line-height: 1.2; }
+.homeintro p { max-width: 38ch; font-size: clamp(1rem,1.4vw,1.42rem); line-height: 1.4; }
+.contact-page { min-height: 100svh; display: flex; flex-direction: column; }
+.contact-main {
+  width: 100%; max-width: 1536px; margin: auto;
+  padding: clamp(52px,10vw,154px) var(--pad);
+  display: grid; align-items: start;
+  grid-template-columns: minmax(0,.95fr) minmax(0,1fr);
+  gap: clamp(30px,6vw,110px);
+}
+.contact-intro h1 { font-size: clamp(3rem,6vw,6rem); line-height: 1.03; letter-spacing: -.04em; }
+.contact-intro p { font-size: 1rem; line-height: 1.65; max-width: 34em; }
+.contact-intro .contact-name { margin: 1.1rem 0 .35rem; font-size: clamp(1.16rem,1.7vw,1.55rem); line-height: 1.4; }
+.contact-methods { margin: .25rem 0 0; }
+.contact-methods div { border-top: 1px solid #879284; padding: 1.4rem 0 1.75rem; }
+.contact-methods dt { font-size: .93rem; color: #4b5c50; }
+.contact-methods dd { margin: .4rem 0 0; }
+.contact-methods a { font-size: clamp(1.25rem,2.4vw,2.42rem); font-variant-numeric: tabular-nums; line-height: 1.55; }
+.contact-methods a:hover { text-decoration: underline; text-underline-offset: .16em; }
+@media (min-width: 751px) and (max-width: 1110px) {
+  .catnav { grid-template-columns: repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 750px) {
+  .contact-main { grid-template-columns: 1fr; padding-block: 42px 54px; gap: 26px; }
+  .navlinks { gap: 10px; }
+  .navlinks a.pdf { padding: 6px 10px; gap: 4px; min-height: 38px; }
+  .homeintro p { max-width: 28ch; }
+  .masthead h1 { font-size: clamp(1.88rem,7.5vw,3.25rem); max-width: 100%; }
+  .card { grid-template-columns: clamp(56px,18vw,108px) minmax(0,1fr) 23px; gap: 12px; }
+  .cardname { font-size: clamp(1.08rem, 4.4vw,1.56rem); overflow-wrap: normal; }
+  .contact-page .bar .directions, .smallhead .bar .directions { display: none; }
+}
+@media (max-width: 370px) {
+  :root { --pad: 12px; }
+  .navlinks a.pdf small { display: none; }
+  .bar, .cinema-hero .bar { min-height: 60px; }
+  .product-title { font-size: 1.16rem; }
+  .foot nav { gap: 10px; }
+}
+@media (max-width: 750px) {
+  .category .bar .directions, .smallhead .bar .directions { display: inline-flex; }
+  .category .navlinks, .smallhead .navlinks { gap: 10px; }
+  .category .navlinks a, .smallhead .navlinks a { font-size: .8rem; }
+  .category .navlinks a.pdf small, .smallhead .navlinks a.pdf small { display: none; }
+  .homehero { min-height: 350px; height: clamp(350px,48svh,465px); }
+  .home-art img { object-position: center 64%; }
+  .homehero:before {
+    background: linear-gradient(180deg,#111e18c9 0%,#0f1915a1 19%,#121a1438 44%,transparent 68%);
+  }
+  .homeintro { justify-content: flex-start; padding-top: 19px; }
+  .homeintro p { max-width: min(92%,310px); font-size: .94rem; line-height: 1.35; }
+  .card { row-gap: 3px; padding-block: 9px; }
+  .cardpic { grid-row: 1 / 3; }
+  .cardname { grid-column: 2; align-self: end; }
+  .card-action { display: contents; }
+  .card-action span { display: block; font-size: .76rem; grid-column: 2; grid-row: 2; align-self: start; }
+  .card-action i { grid-column: 3; grid-row: 1 / 3; }
+}
+@media (max-width: 370px) {
+  .category .navlinks, .smallhead .navlinks { gap: 7px; }
+  .category .navlinks a.pdf, .smallhead .navlinks a.pdf { padding-inline: 6px; }
+  .category .brand, .smallhead .brand { font-size: 12px; }
+}
+.image-kind { display: block; font-size: .82rem; line-height: 1.4; color: #505d54; margin-bottom: 8px; }
+@media (max-width: 750px) {
+  .steel .masthead h1 { font-size: clamp(1.56rem,8vw,3.25rem); }
+}
+@media (max-width: 370px) {
+  .bar .navlinks .pdf > span { display: none; }
+  .bar .navlinks .pdf > small { display: inline; font: inherit; }
+}
+.bar .navlinks a.pdf { gap: 5px; }
+.bar .navlinks a.pdf small { display: inline; font-size: .76em; }
+@media (max-width: 370px) { .bar .navlinks a.pdf small { font-size: 1em; } }
