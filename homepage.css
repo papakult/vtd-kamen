@@ -100,10 +100,7 @@
   .direction-grid { grid-template-columns: repeat(3,minmax(0,1fr)); row-gap: 23px; }
 }
 @media (max-width: 700px) {
-  .site-mast { min-height: 56px; padding-block: 4px; }
-  .site-mast .brand { font-size: 13px; gap: 7px; }
-
-  .site-mast .navlinks { display: none; }
+  .mast-surface { display: none; }
   .direction-grid { grid-template-columns: 1fr; gap: 0; padding-block: 5px 16px; }
   .direction-card {
     display: grid; grid-template-columns: clamp(72px,23vw,128px) minmax(0,1fr);
@@ -196,9 +193,6 @@
   text-wrap: balance;
 }
 @media (max-width: 700px) {
-  .site-mast { min-height: 60px; }
-  .site-mast .brand { min-height: 44px; font-size: .8125rem; line-height: 1.25; }
-
   .direction-grid { padding-block: 5px 19px; }
   .direction-card { padding-block: 12px; }
   .direction-arrow { inset: auto 0 12px auto; }
