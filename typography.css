@@ -59,7 +59,6 @@ h1, h2, h3, .product-title, .cardname {
 @media (max-width: 750px) {
   .contact-main { grid-template-columns: 1fr; padding-block: 42px 54px; gap: 26px; }
   .navlinks { gap: 10px; }
-  .navlinks a.pdf { padding: 6px 10px; gap: 4px; min-height: 38px; }
   .homeintro p { max-width: 28ch; }
   .masthead h1 { font-size: clamp(1.88rem,7.5vw,3.25rem); max-width: 100%; }
   .card { grid-template-columns: clamp(56px,18vw,108px) minmax(0,1fr) 23px; gap: 12px; }
@@ -68,7 +67,6 @@ h1, h2, h3, .product-title, .cardname {
 }
 @media (max-width: 370px) {
   :root { --pad: 12px; }
-  .navlinks a.pdf small { display: none; }
   .bar, .cinema-hero .bar { min-height: 60px; }
   .product-title { font-size: 1.16rem; }
   .foot nav { gap: 10px; }
@@ -77,7 +75,6 @@ h1, h2, h3, .product-title, .cardname {
   .category .bar .directions, .smallhead .bar .directions { display: inline-flex; }
   .category .navlinks, .smallhead .navlinks { gap: 10px; }
   .category .navlinks a, .smallhead .navlinks a { font-size: .8rem; }
-  .category .navlinks a.pdf small, .smallhead .navlinks a.pdf small { display: none; }
   .homehero { min-height: 350px; height: clamp(350px,48svh,465px); }
   .home-art img { object-position: center 64%; }
   .homehero:before {
@@ -94,20 +91,14 @@ h1, h2, h3, .product-title, .cardname {
 }
 @media (max-width: 370px) {
   .category .navlinks, .smallhead .navlinks { gap: 7px; }
-  .category .navlinks a.pdf, .smallhead .navlinks a.pdf { padding-inline: 6px; }
   .category .brand, .smallhead .brand { font-size: 12px; }
 }
 .image-kind { display: block; font-size: .82rem; line-height: 1.4; color: #505d54; margin-bottom: 8px; }
 @media (max-width: 750px) {
   .steel .masthead h1 { font-size: clamp(1.56rem,8vw,3.25rem); }
 }
-@media (max-width: 370px) {
-  .bar .navlinks .pdf > span { display: none; }
-  .bar .navlinks .pdf > small { display: inline; font: inherit; }
-}
-.bar .navlinks a.pdf { gap: 5px; }
-.bar .navlinks a.pdf small { display: inline; font-size: .76em; }
-@media (max-width: 370px) { .bar .navlinks a.pdf small { font-size: 1em; } }
+
+
 
 .machine-catalog-nav {
   display: flex; flex-wrap: wrap; gap: 8px clamp(18px,3vw,45px);

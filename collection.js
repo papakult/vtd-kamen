@@ -58,6 +58,7 @@
   let group = '';
   let visible = products;
   let selected = 0;
+  let arrivingSlide;
 
   function markSelected(index) {
     selected = index;
@@ -74,9 +75,17 @@
       }
     }
   }
-  function showSlide(index) {
+  function showSlide(index, animate = false) {
     if (!visible.length) return;
     const next = (index + visible.length) % visible.length;
+    if (arrivingSlide) {
+      delete arrivingSlide.dataset.arriving;
+      arrivingSlide = null;
+    }
+    if (animate && next !== selected) {
+      arrivingSlide = slides.find(slide => slide.dataset.item === visible[next].id);
+      arrivingSlide.dataset.arriving = '';
+    }
     viewport.scrollLeft = next * viewport.clientWidth;
     markSelected(next);
   }
@@ -111,10 +120,10 @@
   });
 
   for (const thumb of thumbs) {
-    thumb.addEventListener('click', () => showSlide(visible.findIndex(row => row.id === thumb.dataset.item)));
+    thumb.addEventListener('click', () => showSlide(visible.findIndex(row => row.id === thumb.dataset.item), true));
   }
   for (const button of gallery.querySelectorAll('[data-step]')) {
-    button.addEventListener('click', () => showSlide(selected + Number(button.dataset.step)));
+    button.addEventListener('click', () => showSlide(selected + Number(button.dataset.step), true));
   }
   viewport.addEventListener('scroll', () => {
     if (!visible.length || !viewport.clientWidth) return;
@@ -124,7 +133,7 @@
   viewport.addEventListener('keydown', event => {
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
     event.preventDefault();
-    showSlide(selected + (event.key === 'ArrowLeft' ? -1 : 1));
+    showSlide(selected + (event.key === 'ArrowLeft' ? -1 : 1), true);
   });
 
   for (const row of products) {

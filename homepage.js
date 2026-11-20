@@ -12,6 +12,12 @@
   video.defaultMuted = true;
   video.muted = true;
 
+  video.addEventListener('timeupdate', () => {
+    if (!reduced.matches && !document.hidden && visible && Number.isFinite(video.duration) && video.duration > 0) {
+      pause.style.setProperty('--film-angle', (360 * video.currentTime / video.duration) + 'deg');
+    }
+  });
+
   function sync() {
     if (reduced.matches || !visible || document.hidden || visitorPaused || blocked) {
       video.pause();

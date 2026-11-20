@@ -61,15 +61,13 @@ body.category:is(.stone,.metals,.steel,.cars,.wood) {
 .category .crumb { color: #e2d5c0; border-color: #ad9680; }
 .category .crumb:hover { color: white; }
 .category .primary,
-.category .playback,
-.category .bar .navlinks .pdf {
+.category .playback{
   background: #1d201deb;
   color: var(--catalog-letter);
   border-color: #9b8b76;
 }
 .category .primary:hover,
-.category .playback:hover,
-.category .bar .navlinks .pdf:hover {
+.category .playback:hover{
   background: #33352d;
   border-color: var(--catalog-metal);
   color: white;
@@ -123,8 +121,45 @@ body.category:is(.stone,.metals,.steel,.cars,.wood) {
 }
 .category .photo-slide { color: var(--catalog-letter); background: var(--catalog-panel); }
 .category .photo-slide > img { background: #1b1d1c; }
-.category .photo-slide figcaption { border-top: 1px solid var(--catalog-edge); }
+.category .photo-slide figcaption {
+  min-height: 60px;
+  border-top: 1px solid var(--catalog-edge);
+  background: linear-gradient(110deg, var(--catalog-raised), var(--catalog-panel) 75%);
+}
+.category .photo-slide .slide-title {
+  padding-inline-start: 12px;
+  border-inline-start: 2px solid var(--catalog-metal);
+}
 .category .photo-slide .group-jump { color: var(--catalog-metal); }
+.category .gallery-controls { gap: clamp(8px, 1vw, 18px); }
+.category .slide-thumb {
+  position: relative;
+  overflow: hidden;
+}
+.category .slide-thumb[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: var(--catalog-metal);
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* Opt these two opacity cues into the site's otherwise stationary interface. */
+  .category .photo-slide[data-arriving] > img {
+    animation: collection-photo-in 280ms ease-out !important;
+  }
+  .category .photo-slide[data-arriving] figcaption {
+    animation: collection-caption-in 230ms 45ms ease-out backwards !important;
+  }
+  @keyframes collection-photo-in {
+    from { opacity: .48; }
+    to { opacity: 1; }
+  }
+  @keyframes collection-caption-in {
+    from { opacity: .72; }
+    to { opacity: 1; }
+  }
+}
 .category .thumbs { scrollbar-color: var(--catalog-control-edge) var(--catalog-ground); }
 .category .slide-thumb { opacity: .76; background: var(--catalog-panel); }
 .category .slide-thumb:hover, .category .slide-thumb[aria-pressed="true"] {
@@ -177,11 +212,6 @@ body.category:is(.stone,.metals,.steel,.cars,.wood) {
   border-color: var(--catalog-control-edge);
 }
 .category .handbook td { border-color: var(--catalog-edge); }
-.category .handbook .pagepdf {
-  color: var(--catalog-highlight);
-  background: var(--catalog-raised);
-  border: 1px solid var(--catalog-control-edge);
-}
 .category .foot {
   background: #141715;
   color: var(--catalog-muted);
