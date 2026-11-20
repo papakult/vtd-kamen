@@ -103,8 +103,7 @@
   .site-mast { min-height: 56px; padding-block: 4px; }
   .site-mast .brand { font-size: 13px; gap: 7px; }
 
-  .site-mast .navlinks { gap: 14px; }
-  .site-mast .navlinks a { font-size: .875rem; min-height: 44px; padding-inline: 3px; }
+  .site-mast .navlinks { display: none; }
   .direction-grid { grid-template-columns: 1fr; gap: 0; padding-block: 5px 16px; }
   .direction-card {
     display: grid; grid-template-columns: clamp(72px,23vw,128px) minmax(0,1fr);
@@ -136,7 +135,6 @@
 }
 @media (max-width: 345px) {
   .trading-home { --edge: 12px; }
-  .site-mast .navlinks { gap: 12px; }
   .cover-copy p { max-width: 30ch; }
 }
 .direction-arrow::before, .direction-arrow::after { content:""; position: absolute; }
@@ -212,9 +210,6 @@
   .cover-copy p { max-width: 35ch; font-size: 1rem; line-height: 1.44; text-wrap: pretty; }
 }
 .site-mast .navlinks { color: #fff7e8; }
-@media (max-width: 500px) {
-  .site-mast .navlinks { gap: clamp(5px, 2vw, 11px); }
-}
 
 /* Pair a view of the trade with a product from its collection. */
 .direction-media {
