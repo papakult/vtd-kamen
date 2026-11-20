@@ -10,8 +10,8 @@
   <link rel="preload" href="assets/display.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css?v=590c0dc379">
   <link rel="stylesheet" href="typography.css?v=7c2d6d4277">
-  <link rel="stylesheet" href="homepage.css?v=31c386fb3d">
-  <script src="homepage.js?v=1fbbdd10cb" defer></script>
+  <link rel="stylesheet" href="homepage.css?v=cf1afd68c9">
+  <script src="homepage.js?v=49e48e58f6" defer></script>
 </head>
 <body class="trading-home">
   <a class="skip" href="#main">К содержанию</a>
@@ -19,14 +19,14 @@
   <main id="main">
     <section class="materials-cover" aria-labelledby="cover-title">
       <picture class="cover-art">
-        <source media="(max-width: 640px)" srcset="hero/gallery-mobile.webp" width="720" height="900">
+        <source media="(max-width: 640px) and (orientation: portrait)" srcset="hero/edition-mobile.webp" width="720" height="900">
         <img src="hero/gallery-mid.webp" srcset="hero/gallery-mid.webp 1120w, hero/gallery-wide.webp 1920w" sizes="100vw" width="1920" height="817" alt="Архитектурная композиция из камня, меди, стального двутавра и древесины" fetchpriority="high">
       </picture>
-      <video id="materials-film" muted playsinline preload="none" aria-hidden="true" data-src="hero/materials-film.mp4"></video>
+      <video id="materials-film" muted playsinline preload="none" aria-hidden="true" data-wide="hero/materials-edition-wide.mp4" data-portrait="hero/materials-edition-mobile.mp4"></video>
       <div class="cover-copy">
         <h1 id="cover-title">Камень</h1>
-        <p>Материалы и&nbsp;техника для&nbsp;строительства и&nbsp;промышленности.</p>
-        <a class="catalog-entry" href="#directions">Открыть каталог <span aria-hidden="true">↓</span></a>
+        <p>Нерудные материалы, металлы, стальные конструкции, древесина и&nbsp;техника.</p>
+        <a class="catalog-entry" href="#directions">Открыть каталог <span aria-hidden="true"></span></a>
       </div>
       <button class="film-toggle" type="button" aria-controls="materials-film" aria-pressed="false" hidden>
         <span class="film-icon" aria-hidden="true"></span><span class="film-label">Смотреть фильм</span>
@@ -36,27 +36,27 @@
       <a class="direction-card" href="stone.html">
         <img src="hero/direction-stone.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
         <span class="direction-copy"><span class="direction-title">Камень и&nbsp;нерудные материалы</span><span class="direction-count">17 позиций</span></span>
-        <span class="direction-arrow" aria-hidden="true">↗</span>
+        <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="metals.html">
         <img src="hero/direction-metals.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
         <span class="direction-copy"><span class="direction-title">Металлы высокой чистоты</span><span class="direction-count">9 позиций</span></span>
-        <span class="direction-arrow" aria-hidden="true">↗</span>
+        <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="steel.html">
         <img src="hero/direction-steel.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
         <span class="direction-copy"><span class="direction-title single-word">Металлоконструкции</span><span class="direction-count">12 позиций</span></span>
-        <span class="direction-arrow" aria-hidden="true">↗</span>
+        <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="cars.html">
         <img src="hero/direction-cars.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
-        <span class="direction-copy"><span class="direction-title">Автомобили, спецтехника и&nbsp;запчасти</span><span class="direction-count">19 позиций</span></span>
-        <span class="direction-arrow" aria-hidden="true">↗</span>
+        <span class="direction-copy"><span class="direction-title">Автомобили, спецтехника и&nbsp;запчасти</span><span class="direction-count">19 товарных групп</span></span>
+        <span class="direction-arrow" aria-hidden="true"></span>
       </a>
       <a class="direction-card" href="wood.html">
         <img src="hero/direction-wood.webp" width="540" height="278" alt="" loading="lazy" decoding="async">
         <span class="direction-copy"><span class="direction-title single-word">Деревообработка</span><span class="direction-count">19 позиций</span></span>
-        <span class="direction-arrow" aria-hidden="true">↗</span>
+        <span class="direction-arrow" aria-hidden="true"></span>
       </a>
     </nav>
   </main>

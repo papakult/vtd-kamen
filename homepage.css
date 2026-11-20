@@ -133,3 +133,13 @@
   .site-mast .navlinks { gap: 12px; }
   .cover-copy p { max-width: 17ch; }
 }
+.direction-arrow::before, .direction-arrow::after { content:""; position: absolute; }
+.direction-arrow::before { width: 10px; height: 1px; background: currentColor; transform: rotate(-45deg); }
+.direction-arrow::after { width: 6px; height: 6px; border-top: 1px solid; border-right: 1px solid; transform: translate(1.7px,-1.7px); }
+.catalog-entry span { width: 12px; height: 14px; display: inline-grid; position: relative; place-items:center; }
+.catalog-entry span::before { content:""; height: 12px; border-left: 1px solid; }
+.catalog-entry span::after { content:""; position:absolute; bottom:2px; width:6px; height:6px; border-right:1px solid; border-bottom:1px solid; transform: rotate(45deg); }
+@media (max-width:700px) { .direction-arrow { position:relative; inset: auto; } }
+@media (max-width:640px) and (orientation:portrait) {
+  #materials-film { object-fit: cover; object-position: center; }
+}

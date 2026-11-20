@@ -4,6 +4,7 @@
   const button = cover.querySelector('.film-toggle');
   if (!video.canPlayType('video/mp4')) return;
   const label = button.querySelector('.film-label');
+  const portrait = window.matchMedia('(max-width: 640px) and (orientation: portrait)');
   function update() {
     const playing = !video.paused && !video.ended;
     cover.toggleAttribute('data-playing', playing);
@@ -16,7 +17,8 @@
       video.pause();
       return;
     }
-    if (!video.getAttribute('src')) video.src = video.dataset.src;
+    const source = portrait.matches ? video.dataset.portrait : video.dataset.wide;
+    if (video.getAttribute('src') !== source) video.src = source;
     video.play().catch(update);
   });
   for (const event of ['playing', 'pause', 'ended']) video.addEventListener(event, update);
