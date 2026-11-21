@@ -16,7 +16,8 @@
   <link rel="icon" href="mark.svg?v=f4d3f733ad" type="image/svg+xml">
   <link rel="stylesheet" href="style.css?v=78971b3782">
   <link rel="stylesheet" href="typography.css?v=dfc4d8bc3d">
-  <link rel="stylesheet" href="construction.css">
+  <link rel="stylesheet" href="construction.css?v=work-details-1">
+  <script src="construction.js" defer></script>
 </head>
 <body class="construction">
   <a class="skip" href="#main">К содержанию</a>
@@ -39,7 +40,6 @@
           srcset="hero/construction-480.webp 480w, hero/construction-920.webp 920w, hero/construction-1440.webp 1440w"
           sizes="(max-width: 820px) calc(100vw - 36px), (max-width: 1520px) 50vw, 760px"
           width="920" height="613" alt="Монолитный железобетонный каркас здания на стройплощадке" fetchpriority="high">
-        <figcaption>Иллюстрация монолитного строительства</figcaption>
       </figure>
     </section>
 
@@ -47,30 +47,186 @@
       <h2 id="works-title">Виды работ</h2>
       <div class="construction-works">
         <article>
-          <h3>Проектирование</h3>
+          <h3><button type="button" data-work-dialog="work-design" aria-haspopup="dialog" aria-controls="work-design">Проектирование<span aria-hidden="true">+</span></button></h3>
           <p>Рабочая документация, конструктивные решения и проекты инженерных систем с учётом назначения объекта.</p>
         </article>
         <article>
-          <h3>Монолит и строительство зданий</h3>
+          <h3><button type="button" data-work-dialog="work-building" aria-haspopup="dialog" aria-controls="work-building">Монолит и строительство зданий<span aria-hidden="true">+</span></button></h3>
           <p>Фундаменты, железобетонные каркасы, стены и перекрытия. Возведение зданий по проектной документации.</p>
         </article>
         <article>
-          <h3>Электроснабжение</h3>
+          <h3><button type="button" data-work-dialog="work-power" aria-haspopup="dialog" aria-controls="work-power">Электроснабжение<span aria-hidden="true">+</span></button></h3>
           <p>Проектирование и монтаж электросетей, прокладка кабелей, сборка щитов и установка освещения.</p>
         </article>
         <article>
-          <h3>Вентиляция</h3>
+          <h3><button type="button" data-work-dialog="work-ventilation" aria-haspopup="dialog" aria-controls="work-ventilation">Вентиляция<span aria-hidden="true">+</span></button></h3>
           <p>Проектирование и монтаж систем вентиляции, прокладка воздуховодов и установка оборудования.</p>
         </article>
         <article>
-          <h3>Водоснабжение и водоотведение</h3>
+          <h3><button type="button" data-work-dialog="work-water" aria-haspopup="dialog" aria-controls="work-water">Водоснабжение и водоотведение<span aria-hidden="true">+</span></button></h3>
           <p>Проектирование и устройство сетей подачи воды и отвода стоков.</p>
         </article>
         <article>
-          <h3>Отделочные работы</h3>
+          <h3><button type="button" data-work-dialog="work-finishes" aria-haspopup="dialog" aria-controls="work-finishes">Отделочные работы<span aria-hidden="true">+</span></button></h3>
           <p>Подготовка стен и полов, укладка плитки и чистовая отделка по проекту.</p>
         </article>
       </div>
+
+      <dialog id="work-design" class="construction-dialog" aria-labelledby="work-design-title">
+        <header class="construction-dialog-head">
+          <h2 id="work-design-title">Проектирование</h2>
+          <form method="dialog">
+            <button class="construction-close" type="submit" autofocus>Закрыть</button>
+          </form>
+        </header>
+        <div class="construction-examples">
+          <article class="construction-example">
+            <img src="hero/construction-works/architecture.webp" width="480" height="480" alt="План здания и архитектурный макет на рабочем столе" loading="lazy" decoding="async">
+            <h3>Архитектурные решения</h3>
+            <p>Планировки, фасады и привязка помещений к назначению здания.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/structures.webp" width="480" height="480" alt="Трёхмерная модель железобетонного каркаса" loading="lazy" decoding="async">
+            <h3>Конструктивные решения</h3>
+            <p>Проекты фундаментов, несущих каркасов, стен и перекрытий.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/engineering.webp" width="480" height="480" alt="Трёхмерная модель воздуховодов, труб и кабельных лотков" loading="lazy" decoding="async">
+            <h3>Инженерные системы</h3>
+            <p>Проекты электроснабжения, вентиляции, водоснабжения и водоотведения. Согласование трасс между разделами.</p>
+          </article>
+        </div>
+      </dialog>
+
+      <dialog id="work-building" class="construction-dialog" aria-labelledby="work-building-title">
+        <header class="construction-dialog-head">
+          <h2 id="work-building-title">Монолит и строительство зданий</h2>
+          <form method="dialog">
+            <button class="construction-close" type="submit" autofocus>Закрыть</button>
+          </form>
+        </header>
+        <div class="construction-examples">
+          <article class="construction-example">
+            <img src="hero/construction-works/foundation.webp" width="480" height="480" alt="Арматурная сетка и опалубка будущего фундамента" loading="lazy" decoding="async">
+            <h3>Фундаменты</h3>
+            <p>Армирование, опалубка и бетонирование по проекту.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/concrete.webp" width="480" height="480" alt="Железобетонные колонны и перекрытия на стройплощадке" loading="lazy" decoding="async">
+            <h3>Монолитный каркас</h3>
+            <p>Возведение железобетонных колонн, стен и перекрытий.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/buildings.webp" width="480" height="480" alt="Фасад современного многоэтажного здания" loading="lazy" decoding="async">
+            <h3>Возведение зданий</h3>
+            <p>Комплекс строительных работ для жилых, коммерческих и промышленных объектов.</p>
+          </article>
+        </div>
+      </dialog>
+
+      <dialog id="work-power" class="construction-dialog" aria-labelledby="work-power-title">
+        <header class="construction-dialog-head">
+          <h2 id="work-power-title">Электроснабжение</h2>
+          <form method="dialog">
+            <button class="construction-close" type="submit" autofocus>Закрыть</button>
+          </form>
+        </header>
+        <div class="construction-examples">
+          <article class="construction-example">
+            <img src="hero/construction-works/cables.webp" width="480" height="480" alt="Кабельные лотки под потолком здания" loading="lazy" decoding="async">
+            <h3>Кабельные линии</h3>
+            <p>Монтаж лотков и прокладка силовых и распределительных линий.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/panels.webp" width="480" height="480" alt="Распределительный шкаф с рядами устройств защиты" loading="lazy" decoding="async">
+            <h3>Распределительные щиты</h3>
+            <p>Сборка и установка щитов с коммутационными устройствами и защитой по проекту.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/lighting.webp" width="480" height="480" alt="Ряды светильников над проходом в промышленном здании" loading="lazy" decoding="async">
+            <h3>Освещение</h3>
+            <p>Монтаж светильников для рабочих зон, проходов и помещений.</p>
+          </article>
+        </div>
+      </dialog>
+
+      <dialog id="work-ventilation" class="construction-dialog" aria-labelledby="work-ventilation-title">
+        <header class="construction-dialog-head">
+          <h2 id="work-ventilation-title">Вентиляция</h2>
+          <form method="dialog">
+            <button class="construction-close" type="submit" autofocus>Закрыть</button>
+          </form>
+        </header>
+        <div class="construction-examples">
+          <article class="construction-example">
+            <img src="hero/construction-works/supply-air.webp" width="480" height="480" alt="Приточная установка и воздуховоды в техническом помещении" loading="lazy" decoding="async">
+            <h3>Приточная вентиляция</h3>
+            <p>Установка оборудования для подачи и обработки наружного воздуха.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/exhaust-air.webp" width="480" height="480" alt="Вытяжные установки на кровле" loading="lazy" decoding="async">
+            <h3>Вытяжная вентиляция</h3>
+            <p>Монтаж вытяжных вентиляторов и систем удаления воздуха из помещений.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/ducts.webp" width="480" height="480" alt="Оцинкованные воздуховоды под потолком" loading="lazy" decoding="async">
+            <h3>Воздуховоды и решётки</h3>
+            <p>Прокладка каналов, монтаж решёток и устройств распределения воздуха.</p>
+          </article>
+        </div>
+      </dialog>
+
+      <dialog id="work-water" class="construction-dialog" aria-labelledby="work-water-title">
+        <header class="construction-dialog-head">
+          <h2 id="work-water-title">Водоснабжение и водоотведение</h2>
+          <form method="dialog">
+            <button class="construction-close" type="submit" autofocus>Закрыть</button>
+          </form>
+        </header>
+        <div class="construction-examples">
+          <article class="construction-example">
+            <img src="hero/construction-works/water-supply.webp" width="480" height="480" alt="Трубы водоснабжения с запорной арматурой и манометрами" loading="lazy" decoding="async">
+            <h3>Водоснабжение</h3>
+            <p>Разводка холодной и горячей воды, монтаж трубопроводов и запорной арматуры.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/drainage.webp" width="480" height="480" alt="Трубы внутренней канализации в техническом помещении" loading="lazy" decoding="async">
+            <h3>Внутреннее водоотведение</h3>
+            <p>Монтаж стояков, выпусков и разводки для отвода стоков из здания.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/utility-lines.webp" width="480" height="480" alt="Прокладка наружного трубопровода в траншее" loading="lazy" decoding="async">
+            <h3>Наружные сети</h3>
+            <p>Прокладка труб за пределами здания и устройство подключений по проекту.</p>
+          </article>
+        </div>
+      </dialog>
+
+      <dialog id="work-finishes" class="construction-dialog" aria-labelledby="work-finishes-title">
+        <header class="construction-dialog-head">
+          <h2 id="work-finishes-title">Отделочные работы</h2>
+          <form method="dialog">
+            <button class="construction-close" type="submit" autofocus>Закрыть</button>
+          </form>
+        </header>
+        <div class="construction-examples">
+          <article class="construction-example">
+            <img src="hero/construction-works/preparation.webp" width="480" height="480" alt="Помещение с оштукатуренными стенами и свежей стяжкой" loading="lazy" decoding="async">
+            <h3>Подготовка стен и полов</h3>
+            <p>Выравнивание поверхностей, штукатурка и устройство стяжки.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/tiles.webp" width="480" height="480" alt="Укладка плитки с использованием системы выравнивания" loading="lazy" decoding="async">
+            <h3>Укладка плитки</h3>
+            <p>Облицовка стен и полов керамической плиткой и керамогранитом.</p>
+          </article>
+          <article class="construction-example">
+            <img src="hero/construction-works/interior.webp" width="480" height="480" alt="Готовый интерьер с отделанными стенами и каменным полом" loading="lazy" decoding="async">
+            <h3>Чистовая отделка</h3>
+            <p>Финишные покрытия стен и полов по проекту помещения.</p>
+          </article>
+        </div>
+      </dialog>
     </section>
 
     <section class="construction-section construction-wrap" aria-labelledby="estimate-title">
