@@ -153,7 +153,13 @@ body.construction {
   border-bottom: 1px solid var(--construction-line);
   background: #202421;
 }
-.construction-dialog-head h2 { font-size: clamp(1.35rem, 3vw, 2.65rem); text-wrap: pretty; }
+.construction-dialog-head h2 {
+  min-width: 0;
+  font-size: clamp(1.35rem, 3vw, 2.65rem);
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+.construction-dialog-head form { flex: none; }
 .construction-close {
   min-height: 44px;
   padding: .45rem .8rem;
@@ -198,5 +204,6 @@ body.construction {
   .construction-mast .navlinks a { text-align: right; }
   .construction-works { grid-template-columns: 1fr; }
   .construction-examples { grid-template-columns: 1fr; gap: 1.4rem; }
+  .construction-dialog-head h2 { font-size: clamp(1.125rem, 5.3vw, 1.35rem); }
   .construction-footer { padding-block: .55rem; font-size: .875rem; }
 }
