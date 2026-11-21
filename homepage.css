@@ -68,7 +68,7 @@
   pointer-events: none;
 }
 .direction-grid {
-  display: grid; grid-template-columns: repeat(5, minmax(0,1fr));
+  display: grid; grid-template-columns: repeat(6, minmax(0,1fr));
   gap: clamp(12px, 1.4vw, 26px); max-width: 1920px;
   padding: clamp(20px,2.25vw,43px) var(--edge); margin: auto;
 }
@@ -223,6 +223,7 @@
   min-height: 0;
   object-fit: cover;
 }
+.direction-media-wide { grid-template-columns: 1fr; }
 .direction-sample { position: relative; min-width: 0; overflow: hidden; }
 .direction-sample img { position: absolute; inset: 0; }
 .direction-preview { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
