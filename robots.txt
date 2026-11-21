@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /Kamen_KP_41.pdf
+Disallow: /assets/
+Disallow: /gallery/
+Disallow: /hero/
+Disallow: /motion/
+Disallow: /products/
+
+User-agent: TelegramBot
+Disallow: /Kamen_KP_41.pdf
+
+User-agent: WhatsApp
+Disallow: /Kamen_KP_41.pdf
