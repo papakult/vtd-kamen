@@ -275,3 +275,10 @@
     background: linear-gradient(0deg, rgb(10 15 17 / 89%), rgb(10 15 17 / 60%) 25%, transparent 65%);
   }
 }
+
+@media (min-width: 1111px) and (max-width: 1399px) {
+  .direction-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1400px) {
+  .direction-grid { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+}
